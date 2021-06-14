@@ -1,0 +1,14 @@
+#counter1,#counter2,#counter3 { font-size:2.5rem;}
+.numbering {
+    background-color:#ccc;
+}
+.inner {
+    width: 1280px;
+    margin: 0 auto;
+    padding:100px 0;
+}
+.numbering .inner .content {text-align: center;}
+.numbering .inner .content > span {
+    font-size:18px;
+    line-height: 2;
+}

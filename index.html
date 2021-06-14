@@ -1,16 +1,60 @@
-<DOCTYPE html!>
-<html>
+<!DOCTYPE html>
+<html lang="ko">
+
 <head>
-<meta charset="utf-8">
-<title>WEB1 - welcome</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/main.css" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+ <title> 숫자변환 </title>
 </head>
+
 <body>
-<h1><a href="index.html">web</a></h1>
-<ol>
-<li><a href="1.html">html</a></li>
-<li><a href="2.html">css</a></li>
-<li><a href="3.html">javascript</a></li>
-</ol>
-웹이란 무엇인가?
+    <section class="numbering">
+        <div class="inner">
+            <div class="content">
+                <span>플랫피스는 신개념 인플루언서 마케팅 솔루션을 통해</span>
+                <span id="counter1"></span><span>광고주와 함께</span>
+                <span id="counter2"></span><span>건의 캠페인을 진행</span>
+                <span id="counter3"></span><span>개의 성공 레퍼런스를 만들어가고 있습니다.</span>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function numberCounter(target_frame, target_number) {
+            this.count = 0;
+            this.diff = 0;
+            this.target_count = parseInt(target_number);
+            this.target_frame = document.getElementById(target_frame);
+            this.timer = null;
+            this.counter();
+        };
+        numberCounter.prototype.counter = function() {
+            var self = this;
+            this.diff = this.target_count - this.count;
+
+            if (this.diff > 0) {
+                self.count += Math.ceil(this.diff / 5);
+            }
+
+            this.target_frame.innerHTML = this.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+            if (this.count < this.target_count) {
+                this.timer = setTimeout(function() {
+                    self.counter();
+                }, 20);
+            } else {
+                clearTimeout(this.timer);
+            }
+        };
+
+        new numberCounter("counter1", 99999);
+        new numberCounter("counter2", 21565748);
+        new numberCounter("counter3", 121554864865);
+    </script>
 </body>
+
 </html>
